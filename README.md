@@ -1,2 +1,2 @@
-# spk_vrs_sng_vc
-Accompanying webpage for research consisting of generated audio clip examples
+# spk-vrs-sng-vc
+Online Repository for INTERSPEECH 2023 Submission
