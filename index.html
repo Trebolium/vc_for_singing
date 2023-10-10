@@ -7,16 +7,67 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Quantifying Dissimilarity Between Speech and Singing Domains, and How This Affects Voice Conversion Tasks</h1>
-    <p id="p1">This page presents SVC audio clips from our research on comparisons between singing and speech domain data. In addition to the methods described in our paper, we also use voice conversion tasks to evaluate how well cross-domain tasks apply between speech and singing.
-        Working code for these conversions can be found at [LINK TO BE PROVIDED LATER].
+    <h1>Singing Voice Identity Embedding and Conversion</h1>
+    <p id="p1">This page presents audio references to accompany the written component of my research in singing voice conversion. Audio clips presented in the same tables are intended to be compared to one another. Separate tables may be intended for isolated within-comparison, unless specified otherwise.
+        The code repository that generated these audio outputs can be found at [LINK TO BE CONFIRMED]
     </p>
 
-    <!-- <p id="p1">This page presents the results and stimuli used in our research on singing voice conversion, as detailed in our SMC 2023 submitted paper, Zero-shot Singing Technique Conversion.
-        Directly below are the results of our listening study. </p> -->
 
-    <!-- <img class="img-stats" src="barchart-natSimCos.png" alt="Histograms of naturalness and specificity scores of generated audio"> -->
-    <!-- <figcaption>Upper barchart shows naturalness MOS, middle barchart shows similarity MOS, and bottom barchart shows cosine similarity. Colours highlight the conditional categories: models, source genders, target genders, and source-target gender pairs   . </figcaption> -->
+    <h2>Example of Disparity between Same/Cross Domain Inference</h2>
+
+    <p>This section demonstrates what happens when a voice conversion model is entirely pretrained on one domain and attempts to convert from another domain.</p>
+
+    <h3> Speech conversions audio outputs from AutoVC models pretrained on either singing (column 2) or speech (column 3) data.</h3>
+
+    <div class="grid-container3">
+        <div class="grid-item head">Source voice original audio</div>
+        <div class="grid-item head">Converted voice with speech pretraining</div>
+        <div class="grid-item head">Converted voice with singing pretraining</div>
+
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-spk/p255.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-spk/p255_p268.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/spk-spk/p255_p268.wav"></audio></div>
+
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-spk/p268.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-spk/p268_p255.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/spk-spk/p268_p255.wav"></audio></div>
+        
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-spk/p270.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-spk/p270_p268.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/spk-spk/p270_p268.wav"></audio></div>
+
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-spk/p280.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-spk/p280_p255.wav"></audio></div>    
+        <div class="grid-item"><audio controls src="cross-same-domain/spk-spk/p280_p255.wav"></audio></div>
+
+    </div>
+
+    <h3> Singing conversions audio ouputs from AutoVC models pretrained on either speech (column 2) or singing (column 3) data.</h3>
+
+    <div class="grid-container3">
+        <div class="grid-item head">Source voice original audio</div>
+        <div class="grid-item head">Converted voice with speech pretraining</div>
+        <div class="grid-item head">Converted voice with singing pretraining</div>
+
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-sng/1174863894.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/spk-sng/1174863894_1174863894.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-sng/1174863894_1174863894.wav"></audio></div>
+
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-sng/1143441144.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/spk-sng/1143441144_1102104435.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-sng/1143441144_1102104435.wav"></audio></div>
+        
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-sng/1141223094.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/spk-sng/1141223094_1143441144.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-sng/1141223094_1143441144.wav"></audio></div>
+
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-sng/p280.wav"></audio></div>
+        <div class="grid-item"><audio controls src="cross-same-domain/spk-sng/1102104435_1141223094.wav"></audio></div>    
+        <div class="grid-item"><audio controls src="cross-same-domain/sng-sng/1102104435_1141223094.wav"></audio></div>
+
+    </div>
+
+    <h2> Upperbound quality, as dictated by spectrogram-to-waveform synthesis process</h2>
 
     <p>To illustrate the upperbound limit for quality of our generated audio, the table below presents examples where audio recordings have been converted to mel spectrograms and resynthesized into audio using the pretrained Wavenet vocoder.
         This demonstrates the artefacts and deterioration due to resynthesis alone, and therefore provides an indication of the upperbound audio quality that other audio clips can be compared against for reference:</p>
@@ -32,7 +83,9 @@
         <div class="grid-item"><audio controls src="1295/f9_arpeggios_vocal_fry_a_wvnt.mp3"></audio></div>
     </div>
     
-    <h3>Spoken Voice Conversion with/without latent regressor loss</h3>
+    <h2>Spoken Voice Conversion with/without latent regressor loss</h2>
+
+    <h3>Model condition: VCTK-BN</h3>
 
     <p> The audio files presented in the table below have been generated by an AutoVC network that used the bottleneck latent regressor loss,
         and was trained for 100,000 training steps on a quarter of the VCTK dataset.
@@ -65,6 +118,7 @@
 
     </div>
 
+    <h3>Model: VCTK</h3>
 
     <p> For comparison, the audio files presented in this next table below come from an AutoVC model that was trained under the same conditions as the aforementioned model,
         but instead only used the reconstruction loss in its objective function. It can be heard from these examples, that the output audio is significantly less distorted or ambiguous in timbre.
@@ -94,7 +148,9 @@
 
     </div>
 
-    <h3> Singing Voice Conversion </h3>
+    <h2> Singing Voice Conversion with Different Features</h2>
+
+    <h3> SVC with WORLD features </h3>
 
     <p> The audio files presented in the table below have been generated by an AutoVC network that took WORLD spectral envelope features as input, using only reconstruction loss. The VIE encoder that was trained on the entire DAMP datasets.
         This AutoVC network was trained for 100,000 training steps on a quarter of the DAMP dataset. Here we observe conversions perceptually specific to microphone placement, loudness and room frequency reponse - but not vocal timbre.
@@ -123,6 +179,8 @@
         <div class="grid-item"><audio controls src="autoVc-ReconOnly-dampWorld0.25_Vie-damp_100kSteps/1615650453_426780220.wav"></audio></div>
 
     </div> 
+
+    <h3> SVC with Mel-spectrogram features </h3>
 
     <p> For comparison, the audio files presented in this next table below have been generated by a model trained under the same conditions as the SVC model mentioned above, except for itst input features which were mel spectrograms.
     </p>
